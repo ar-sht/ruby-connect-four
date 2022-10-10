@@ -35,6 +35,10 @@ class Board
     column.none?(&:nil?)
   end
 
+  def full?
+    @board.all? { |column| column_full?(@board.index(column)) }
+  end
+
   def won?
     flat_board = @board.flatten
     7.times do |shift|
@@ -90,14 +94,3 @@ class Board
     false
   end
 end
-
-puts
-
-board = Board.new
-5.times do |i|
-  6.times do |i|
-    board.place_piece(i, rand(2) % 2)
-  end
-end
-
-board.pretty_print

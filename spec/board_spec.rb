@@ -36,7 +36,7 @@ describe Board do
       it 'returns false' do
         not_full_column = 3
         result = board.column_full?(not_full_column)
-        expect(result).not_to be true
+        expect(result).to be false
       end
     end
 
@@ -50,6 +50,30 @@ describe Board do
       it 'returns true' do
         full_column = 3
         result = board.column_full?(full_column)
+        expect(result).to be true
+      end
+    end
+  end
+
+  describe '#full?' do
+    subject(:board) { Board.new }
+
+    context 'when board is not full' do
+      it 'returns false' do
+        result = board.full?
+        expect(result).to be false
+      end
+    end
+
+    context 'when board is full' do
+      before do
+        42.times do |i|
+          board.place_piece(i % 7, 0)
+        end
+      end
+
+      it 'returns true' do
+        result = board.full?
         expect(result).to be true
       end
     end

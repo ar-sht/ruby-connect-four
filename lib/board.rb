@@ -1,3 +1,5 @@
+require_relative 'color'
+
 class Board
   COMBOS = [
     [0, 1, 2, 3, 4, 5],
@@ -18,10 +20,12 @@ class Board
         row_string += "\u2503 #{@board[column][row].nil? ? ' ' : @board[column][row]} "
       end
       row_string += "\u2503"
-      row_strings.append(row_string)
-      row_strings.append(" #{"  \u23AF " * 7}")
+      row_strings.append(color(row_string, CYAN))
+      row_strings.append(color(" #{"  \u23AF " * 7}", CYAN))
     end
-    row_strings.append("\u002F#{' ' * 29}\u005C")
+    num_row = ''
+    7.times { |i| num_row += "  #{i + 1} "}
+    row_strings.append(color("\u002F#{num_row} \u005C", CYAN))
     puts row_strings.join("\n")
   end
 

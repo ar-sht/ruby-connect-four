@@ -54,4 +54,71 @@ describe Board do
       end
     end
   end
+
+  describe '#won?' do
+    context 'when game is won vertically' do
+      subject(:board) { Board.new }
+
+      before do
+        6.times do
+          board.place_piece(3, 0)
+        end
+      end
+
+      it 'returns true' do
+        result = board.won?
+        expect(result).to be true
+      end
+    end
+
+    context 'when game is won horizontally' do
+      subject(:board) { Board.new }
+
+      before do
+        4.times do |i|
+          board.place_piece(i, 0)
+        end
+      end
+
+      it 'returns true' do
+        result = board.won?
+        expect(result).to be true
+      end
+    end
+
+    context 'when game is won diagonally' do
+      subject(:board) { Board.new }
+
+      before do
+        4.times do |i|
+          i.times do
+            board.place_piece(i, ((i % 2) + 1) % 2)
+          end
+          board.place_piece(i, 1)
+        end
+      end
+
+      it 'returns true' do
+        result = board.won?
+        expect(result).to be true
+      end
+    end
+
+    context 'when game is not won' do
+      subject(:board) { Board.new }
+
+      before do
+        6.times do |i|
+          3.times do |j|
+            board.place_piece(j, ((i % 2) + (j % 2)) % 2)
+          end
+        end
+      end
+
+      it 'returns false' do
+        result = board.won?
+        expect(result).to be false
+      end
+    end
+  end
 end

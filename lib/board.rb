@@ -51,9 +51,9 @@ class Board
       indexes.each do |index|
         column.append(flat_board[index])
       end
-      3.times do |i|
+      2.times do |i|
         four = column.slice(i, 4)
-        return true if four.uniq.size == 1 && four.none?(&:nil?)
+        return true if four.uniq.size == 1 && four.none?(&:nil?) && four.size == 4
       end
     end
 
@@ -63,9 +63,9 @@ class Board
       indexes.each do |index|
         row.append(flat_board[index])
       end
-      4.times do |i|
+      3.times do |i|
         four = row.slice(i, 4)
-        return true if four.uniq.size == 1 && four.none?(&:nil?)
+        return true if four.uniq.size == 1 && four.none?(&:nil?) && four.size == 4
       end
     end
 
@@ -84,14 +84,14 @@ class Board
         diag2.append(flat_board[index])
       end
 
-      (diag1.size - 3).times do |i|
+      (diag1.size - 4).times do |i|
         four = diag1.slice(i, 4)
-        return true if four.uniq.size == 1 && four.none?(&:nil?)
+        return true if four.uniq.size == 1 && four.none?(&:nil?) && four.size == 4
       end
 
-      (diag2.size - 3).times do |i|
+      (diag2.size - 4).times do |i|
         four = diag2.slice(i, 4)
-        return true if four.uniq.size == 1 && four.none?(&:nil?)
+        return true if four.uniq.size == 1 && four.none?(&:nil?) && four.size == 4
       end
     end
 

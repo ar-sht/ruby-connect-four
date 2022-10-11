@@ -6,7 +6,7 @@ describe Board do
   end
 
   describe '#place_piece' do
-    subject(:board) { Board.new }
+    subject(:board) { described_class.new }
 
     context 'when given valid input on an empty column' do
       it 'places the piece on the bottom of the correct row' do
@@ -30,7 +30,7 @@ describe Board do
   end
 
   describe '#column_full?' do
-    subject(:board) { Board.new }
+    subject(:board) { described_class.new }
 
     context 'when column is not full' do
       it 'returns false' do
@@ -56,7 +56,7 @@ describe Board do
   end
 
   describe '#full?' do
-    subject(:board) { Board.new }
+    subject(:board) { described_class.new }
 
     context 'when board is not full' do
       it 'returns false' do
@@ -81,7 +81,7 @@ describe Board do
 
   describe '#won?' do
     context 'when game is won vertically' do
-      subject(:board) { Board.new }
+      subject(:board) { described_class.new }
 
       before do
         6.times do
@@ -96,7 +96,7 @@ describe Board do
     end
 
     context 'when game is won horizontally' do
-      subject(:board) { Board.new }
+      subject(:board) { described_class.new }
 
       before do
         4.times do |i|
@@ -111,7 +111,7 @@ describe Board do
     end
 
     context 'when game is won diagonally' do
-      subject(:board) { Board.new }
+      subject(:board) { described_class.new }
 
       before do
         4.times do |i|
@@ -129,7 +129,7 @@ describe Board do
     end
 
     context 'when game is not won' do
-      subject(:board) { Board.new }
+      subject(:board) { described_class.new }
 
       before do
         6.times do |i|

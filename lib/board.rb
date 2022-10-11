@@ -69,11 +69,11 @@ class Board
       end
     end
 
-    5.times do |shift|
+    6.times do |shift|
       diag1 = []
       diag2 = []
 
-      indexes1 = COMBOS[2].map { |value| value + 2 - shift }.reject { |value| value > 35 || value.negative? || value == 5 || value == 30 }
+      indexes1 = COMBOS[2].map { |value| value + 2 - shift }.reject { |value| value > 35 || value.negative? || value == 5 || value == 30 || value == 17 }
       indexes2 = COMBOS[3].map { |value| value + 2 - shift }.reject { |value| value > 35 || value.negative? || value == 6 || value == 7 || value == 12 }
 
       indexes1.each do |index|
